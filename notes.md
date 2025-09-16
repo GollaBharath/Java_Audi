@@ -209,7 +209,7 @@ When one class (A) attains the state and behavior of another class (B), it is sa
 
 ### What is overriding?
 
-When the child class / derived class requires the same functionality as the parent class but wants to change its implimentation, then it wants to re define that method in its own class. This process is called as over riding.
+When the child class / derived class requires the same functionality as the parent class but wants to change its implementation, then it wants to re define that method in its own class. This process is called as over riding.
 
 There are several rules for over riding :
 
@@ -356,3 +356,64 @@ class example {
 There is only one object in the whole system.
 
 - See [this](./single.java) file.
+
+## Polymorphism
+
+It is of 2 types :
+
+- Runtime Polymorphism / Dynamic Polymorphism
+- Compile time Polymorphism / Static Polymorphism
+
+## Inheritance
+
+Inheritance
+
+It is of 2 types :
+
+- Single inheritance
+- Multi level inheritance
+
+#### Java only supports _single inheritance_.
+
+## Interfaces
+
+An Interface is a contract that specifies what methods a class should implement, without specifying how these methods should be implemented.
+
+Interfaces provides a way to achieve abstraction and multiple inheritance in java, as a class can implement multiple interfaces.
+
+**Coding Convention:** Define the name of interface as `IPlayer` or `IPerson`, etc... basically add `I` to the start of the name.
+
+```java
+interface IPlayer {
+    void win();
+    void lose();
+    void play();
+}
+
+interface IPerson {
+    void eat();
+    void sleep();
+}
+
+class chessPlayer implements IPlayer, IPerson {
+    public void win() {...}
+    public void lose() {...}
+    public void play() {...}
+    public void eat() {...}
+    public void sleep() {...}
+}
+```
+
+Basically same as **Abstract Class** but we can implement multiple Interfaces, so its possible to implement both IPlayer and IPerson.
+
+### API
+
+API - Application Programming _**Interface**_
+
+An interface is a public contract between an Implementing platform and the user.
+
+So they publish a interface with **`abstract methods`**. Also there is a **`.jar`** file which has implementation classes in binary format. Hence we can use their code with APIs using these 2 things.
+
+There are 3rd party libraries which provide us with implementation classes. These libraries are the binary files.
+
+**Abstraction :** Hiding away the implementation of the functionality and giving the users a way to use their methods through APIs.
