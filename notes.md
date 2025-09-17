@@ -155,7 +155,7 @@ Initializer 2 Called 2
 2
 ```
 
-#### Anything that is instance can use static but anything that is instance cannot use static.
+#### Anything that is instance can use static but anything that is static cannot use instance.
 
 ### Why do we need Initializers?
 
