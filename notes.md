@@ -417,3 +417,45 @@ So they publish a interface with **`abstract methods`**. Also there is a **`.jar
 There are 3rd party libraries which provide us with implementation classes. These libraries are the binary files.
 
 **Abstraction :** Hiding away the implementation of the functionality and giving the users a way to use their methods through APIs.
+
+- By default, all the methods in the Interface are **abstract** and **public**. We can change this and give a body to a method of interface by using a keyword `default`
+
+```java
+interface ITest{
+    void tested(); // abstract and public by default
+    default void testing() {
+        System.out.println("This works fine."); // this can have body because we used keyword default.
+    }
+}
+```
+
+- All variables are static and **final** by **default**.
+
+- Interface references can be used to point the objects that implements their associated interface.
+
+### Interface can't implement another interface.
+
+- We can have empty interfaces, they are called _**Marker Interfaces**_.
+
+### Functional Interface :
+
+- A functional interface is a interface with only single abstract method. They can have any number of static or default methods. These are used to create **lambda functions** in Java.
+
+```java
+@FunctionalInterface
+interface kmit {
+    void m();
+}
+
+class testFI {
+    public static void main(String[] args){
+        kmit i = ()->{
+            //function
+            System.out.println("Lambda function")
+        }
+        i.m(); // prints Lambda function
+    }
+}
+```
+
+See [this](./testFI.java) file.

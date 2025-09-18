@@ -1,6 +1,10 @@
 public class testInterface {
     public static void main(String[] args) {
-        
+        chessPlayer Mee = new chessPlayer();
+        Mee.play();
+        Mee.eat();
+        Mee.sleep();
+        // Mee.repeat(); XD
     }
 }
 
@@ -13,6 +17,10 @@ interface IPlayer {
 interface IPerson {
     void eat();
     void sleep();
+}
+
+interface ITest extends IPlayer,IPerson { // inheritance works with interfaces, but same would have failed with classes
+    void works(); 
 }
 
 class chessPlayer implements IPerson, IPlayer {
