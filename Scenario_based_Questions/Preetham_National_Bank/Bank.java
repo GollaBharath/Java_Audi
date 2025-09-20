@@ -1,10 +1,29 @@
-package Scenario_based_Questions.Preetham_National_Bank;
-
 import java.util.Scanner;
 
 public class Bank {
     public static void main(String[] args) {
-        // TODO : Add Ram and Shyam.
+        CurrentAccount RamCurrent = new CurrentAccount(500);
+        SavingsAccount RamSavings = SavingsAccount.openAccount(10000);
+        CurrentAccount ShyamCurrent = new CurrentAccount(20000);
+        SavingsAccount ShyamSavings = SavingsAccount.openAccount(40000);
+        RamCurrent.deposit(60000);
+        RamSavings.deposit(20000);
+        RamSavings.fixedDeposit(25000, 3);
+        RamCurrent.withdraw(6000);
+        RamCurrent.withdraw(4000);
+        RamCurrent.withdraw(25000);
+        RamCurrent.withdraw(20000);
+        ShyamCurrent.deposit(20000);
+        System.out.println("Yes, Ram can make a FD of 4000 from his savings account.");
+        RamSavings.fixedDeposit(4000, 2);
+        ShyamSavings.withdraw(30000);
+        System.out.println("Yes, he can pay the School Fee.");
+        ShyamCurrent.withdraw(40000);
+        ShyamCurrent.deposit(45000);
+        ShyamSavings.fixedDeposit(5000, 0.5);
+        System.out.println("No, he can not open FD.");
+
+        
     }
 }
 
@@ -18,12 +37,12 @@ interface IAccount{
 
 class SavingsAccount implements IAccount{
     double balance = 0;
-    double minBal = 1000;
+    static double minBal = 1000;
     double transactionLimit = 50000;
     double tenure = 2;
-    public SavingsAccount p;
+    public static SavingsAccount p;
 
-    public SavingsAccount openAccount(double openingBalance){
+    public static SavingsAccount openAccount(double openingBalance){
         if (openingBalance < minBal){
             System.out.println("Error : You can not create a account with balance less then the opening balance.");
             return p;
@@ -74,6 +93,7 @@ class SavingsAccount implements IAccount{
             if ((balance - amount) > minBal){
                 balance -= amount;
                 double matureAmount = amount * Math.pow(8.25,tenure) ;
+                System.out.println("FD Successful!!! Maturity Amount : "+matureAmount);
                 return matureAmount;
             }
             else {

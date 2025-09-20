@@ -18,7 +18,7 @@
 ```java
 class account{
     String name = "Bharath";
-    void newname(String name){
+    void newName(String name){
         this.name = name; //this refers to reference variable rather than parameter.
     }
 }
