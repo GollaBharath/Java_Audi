@@ -10,7 +10,7 @@ Transactions limit is only 50000 more than that the bank does not allow to withd
 overdraft limit is only 10000 for Current account.
 a)Ram opens 2 accounts in the bank, one savings with 10000 and current with 500 only.
 Shyam opens 2 account in the same bank, current account with 20000 and 40000 in savings account.
-b)Ram is businessman whose needs to do a lot of transactions in a single day. Ram deposits 20000 in savings account and 60000 in current account
+b)Ram is businessman whose needs to do a lot of transactions in a single day.  Ram deposits 20000 in savings account and 60000 in current account
 c)He makes an FD for 25000 for 3 years
 d)Ram needs to pay 6000 to paper vendor.
 4000 to canteen guy, 25000 to transport.
