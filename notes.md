@@ -459,3 +459,7 @@ class testFI {
 ```
 
 See [this](./testFI.java) file.
+
+## What do you mean by loose coupling of code?
+
+Whenever you create an application, you create 'N' no. of classes, these classes can can have "is-a" relationship or "has-a" relationship or relationship with interfaces. The code should be written in such a way that any addition/deletion in a problem statement should not affect the code. Nothing should be re-written.

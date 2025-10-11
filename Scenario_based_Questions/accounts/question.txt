@@ -1,0 +1,51 @@
+A company is developing a digital wallet system that supports multiple types of users: regular customers, premium customers, and merchants. 
+Each user type behaves differently when performing transactions like paying, adding money, and earning rewards.
+Some operations like transaction history and wallet balance should be common to all.
+Regular Customer
+
+Earns 0.5% cashback on every transaction above ₹1000
+
+Cannot earn reward points
+
+No additional benefits
+Premium Customer
+
+Earns 1.5% cashback on every transaction above ₹500
+
+Earns 2 reward points per ₹100 spent
+
+Can redeem reward points for cashback
+Merchant
+
+Can receive payments from customers
+
+Can issue discounts (like ₹50 off for purchases above ₹1000)
+
+Can generate sales reports (total payments received)
+
+Does not earn cashback or rewards
+
+Create one object each for:
+
+A regular customer (e.g., Ram)
+
+A premium customer (e.g., Shyam)
+
+A merchant (e.g., BigBazaar)
+
+Deposit ₹5000 to each user's wallet.
+
+
+Ram pays ₹1200 to BigBazaar.
+
+Shyam pays ₹3000 to BigBazaar.
+
+Ram checks his cashback and balance.
+
+Shyam checks his cashback, reward points, and balance.
+
+Shyam redeems reward points.
+
+BigBazaar views the total sales and transaction history.
+
+Design the system so that common behavior is reused, and unique behaviors are customizable.

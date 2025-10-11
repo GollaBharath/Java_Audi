@@ -1,0 +1,15 @@
+Develop a BookMyShow application where you have different events like movies, comedy, tours, workshop, etc. 
+
+A user can book the tickets for that event, every event would have a venue and limited number of tickets.
+
+A user can rate the event too. While booking the ticket calculate the total cost and give it to the user.
+
+An event would have a date, slot, rating, tickets, etc.
+
+Rama books 2 movie tickets. Shanta wants to book for the same movie but it shows her all tickets are sold out.
+
+Rama is browsing through the events based on this weeks upcoming events, finds a comedy show for which she wants to book 10 tickets, but she is getting all the tickets separately, not together.
+
+Admin needs to know this weeks sale.
+
+A customer needs to list how many tickets did he buy.
