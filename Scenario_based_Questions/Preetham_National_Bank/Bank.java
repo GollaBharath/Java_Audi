@@ -123,17 +123,18 @@ class SavingsAccount implements IAccount{
         if(getLimit()>amount){
             balance += amount;
             transactionLimit -= amount;
+            IAccount.Display("Deposit Successful!!! Account Balance : "+getBalance());
         }
     }
     public double fixedDeposit(double amount,double tenure){
-        if(minTenure > tenure){
+        if(minTenure >= tenure){
             IAccount.Display("ERROR : Minimum term to open a FD is 2 years.");
             return 0;
         } else {
             if ((getBalance() - amount) > minBal){
                 balance -= amount;
                 double matureAmount = amount * Math.pow(8.25,tenure) ;
-                IAccount.Display(String.format("FD Successful!!! Maturity Amount : %.2f",matureAmount));
+                IAccount.Display(String.format("FD Successful!!! Maturity Amount : %.2f\nBalance in Savings Account : %.2f",matureAmount,getBalance()));
                 return matureAmount;
             }
             else {
@@ -190,6 +191,7 @@ class CurrentAccount implements IAccount {
 
     public void deposit(double amt){
         balance = balance+amt;
+        IAccount.Display("Deposit Successful!!! Account Balance : "+getBalance());
     }
 
     public double overDraft(double amt,int days){
