@@ -1,9 +1,6 @@
 package Scenario_based_Questions.BookMyShow;
 
-import java.lang.reflect.Array;
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.Scanner;
 
 public class BookMyShow {
 

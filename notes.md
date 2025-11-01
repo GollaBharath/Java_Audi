@@ -486,3 +486,285 @@ See [this](./testFI.java) file.
 ## What do you mean by loose coupling of code?
 
 Whenever you create an application, you create 'N' no. of classes, these classes can can have "is-a" relationship or "has-a" relationship or relationship with interfaces. The code should be written in such a way that any addition/deletion in a problem statement should not affect the code. Nothing should be re-written.
+
+## exception handling
+
+## See [this](./Exception%20notes2.txt) file.
+
+## Java Exception Handling – Questions & Answers
+
+### 1. What is the difference between Error, Throwable, and Exception?
+
+- **Throwable** is the superclass for all errors and exceptions in Java.
+- **Exception** represents conditions that a program should handle (e.g., file not found, invalid input).
+- **Error** represents serious issues that a program should not try to handle (e.g., OutOfMemoryError, StackOverflowError).
+
+Example:
+
+```java
+try {
+    int a = 5 / 0; // Exception
+} catch (Exception e) {
+    System.out.println("Handled Exception!");
+}
+
+// Error example
+// throw new OutOfMemoryError("System memory full");
+```
+
+---
+
+### 2. Give examples of Error and Exception.
+
+- **Error examples:** OutOfMemoryError, StackOverflowError, VirtualMachineError
+- **Exception examples:** NullPointerException, IOException, ArithmeticException, FileNotFoundException
+
+Example:
+
+```java
+// Error example
+// throw new StackOverflowError("Stack overflow!");
+
+// Exception example
+String s = null;
+System.out.println(s.length()); // Throws NullPointerException
+```
+
+---
+
+### 3. Why use `try` and `catch`?
+
+They help handle exceptions gracefully so the program doesn’t crash.
+Instead of the program terminating abruptly, we can provide user-friendly messages or recovery logic.
+
+Example:
+
+```java
+try {
+    int result = 10 / 0;
+} catch (ArithmeticException e) {
+    System.out.println("You can't divide by zero!");
+}
+```
+
+---
+
+### 4. Why does a programmer need to implement `try` and `catch`?
+
+Because certain operations (like file I/O, network access, or invalid user input) can fail.
+Handling these exceptions ensures the program behaves predictably even in unexpected situations.
+
+Example:
+
+```java
+try {
+    FileReader fr = new FileReader("file.txt");
+} catch (IOException e) {
+    System.out.println("File not found!");
+}
+```
+
+---
+
+### 5. What will happen if he doesn’t do it?
+
+If exceptions occur and are **not handled**, the program will terminate abruptly, showing an **exception stack trace**.
+
+Example:
+
+```java
+int a = 10 / 0; // Without try-catch → program crashes
+```
+
+---
+
+### 6. What is a bug in a program?
+
+A **bug** is a logical or syntactical mistake in the program that leads to incorrect or unexpected behavior.
+
+Example:
+
+```java
+// Bug: logic mistake
+int marks = -10;
+System.out.println("Percentage: " + marks + "%"); // Logically wrong value
+```
+
+---
+
+### 7. Can a `try` have multiple `catch` blocks?
+
+- **Yes**, one `try` can have **multiple `catch`** blocks to handle different types of exceptions separately.
+
+### Can a `catch` have multiple `try` blocks?
+
+- **No**, one `catch` block cannot directly have multiple `try` blocks, but multiple `try-catch` pairs can exist.
+
+Example:
+
+```java
+try {
+    int a = 5 / 0;
+} catch (ArithmeticException e) {
+    System.out.println("Division by zero");
+} catch (Exception e) {
+    System.out.println("Other exception");
+}
+```
+
+---
+
+### 8. Can I implement `try` and `catch` and still the program can stop due to an exception?
+
+Yes.
+If an exception occurs **outside** of the `try` block or is **not caught properly**, the program may still stop.
+Example: catching the wrong type of exception.
+
+```java
+try {
+    int a = 10 / 0;
+} catch (NullPointerException e) {
+    System.out.println("Wrong type caught!");
+}
+// Program still crashes
+```
+
+---
+
+### 9. Can a `catch` have `try` and `catch`? Give an example.
+
+Yes, **nested try-catch** is allowed.
+
+Example:
+
+```java
+try {
+    int a = 5 / 0;
+} catch (ArithmeticException e) {
+    try {
+        int b = Integer.parseInt("abc");
+    } catch (NumberFormatException ex) {
+        System.out.println("Nested catch block");
+    }
+}
+```
+
+---
+
+### 10. What are the different types of exceptions?
+
+1. **Checked Exceptions** – Checked at compile-time (e.g., IOException, SQLException).
+2. **Unchecked Exceptions** – Occur at runtime (e.g., NullPointerException, ArithmeticException).
+3. **Errors** – Serious problems that cannot be recovered (e.g., OutOfMemoryError).
+
+Example:
+
+```java
+// Checked
+try {
+    FileReader file = new FileReader("test.txt");
+} catch (IOException e) {
+    System.out.println("Handled Checked Exception");
+}
+
+// Unchecked
+int num = 5 / 0; // ArithmeticException
+```
+
+---
+
+### 11. Major difference between checked and unchecked exceptions?
+
+| Feature             | Checked Exception         | Unchecked Exception                       |
+| ------------------- | ------------------------- | ----------------------------------------- |
+| Checked by compiler | Yes                       | No                                        |
+| When occurs         | Compile-time              | Runtime                                   |
+| Examples            | IOException, SQLException | NullPointerException, ArithmeticException |
+| Must be handled     | Yes                       | No (optional)                             |
+
+Example:
+
+```java
+// Checked
+try {
+    Thread.sleep(1000);
+} catch (InterruptedException e) {
+    System.out.println("Handled Checked Exception");
+}
+
+// Unchecked
+String str = null;
+System.out.println(str.length()); // Throws NullPointerException
+```
+
+---
+
+### 12. Difference between syntax error at compile time and checked exception?
+
+- **Syntax error:** Mistake in code structure (e.g., missing semicolon), caught by the **compiler** immediately.
+- **Checked exception:** A valid statement that might fail during execution (e.g., file not found), compiler forces handling.
+
+Example:
+
+```java
+// Syntax Error (will not compile)
+// System.out.println("Hello"
+
+// Checked Exception (must be handled)
+try {
+    FileReader file = new FileReader("data.txt");
+} catch (IOException e) {
+    System.out.println("File not found!");
+}
+```
+
+---
+
+### 13. Why do checked exceptions even exist?
+
+They ensure programmers handle predictable problems (like missing files or invalid input) at compile-time, improving program reliability.
+
+Example:
+
+```java
+try {
+    FileReader fr = new FileReader("students.txt");
+} catch (FileNotFoundException e) {
+    System.out.println("Please check if file exists!");
+}
+```
+
+---
+
+### 14. In the following code:
+
+```java
+catch (Exception e) {
+    // ...
+}
+```
+
+- **What is `e`?**
+  → It is the **reference variable** that holds the thrown Exception object.
+
+- **Who creates it?**
+  → The **JVM** creates it when the exception occurs.
+
+- **Where does it come from?**
+  → It is created and thrown by the **JVM or the `throw` statement** in the program.
+
+Example:
+
+```java
+try {
+    int x = 10 / 0;
+} catch (Exception e) {
+    System.out.println("Exception caught: " + e.getMessage());
+}
+```
+
+---
+
+### exceptional debugging questions
+
+See [this](./debugging%20exercises/) folder.

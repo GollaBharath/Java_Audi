@@ -1,0 +1,136 @@
+What is an Exception:
+An exception in Java is an object that represents an error or an unexpected event that occurs during program execution (runtime).
+
+When such an event happens, Java creates an object of a particular Exception class, and this object contains:
+
+i. The type of exception
+
+ii. The description (message) of the error
+
+iii. The stack trace (the list of methods that were running at the time)
+
+Then this object is “thrown” to the Java Runtime System.
+
+How Exceptions Happen:
+The Following steps, when an exception occurs:
+
+Step 1: Error Detected at Runtime
+When the JVM executes your program, it continuously monitors for abnormal conditions (errors).
+
+Example:
+int x = 10 / 0;
+
+When JVM tries to divide 10 by 0, it detects an illegal arithmetic operation.
+
+Step 2: JVM Creates an Exception Object
+
+At that moment, the JVM creates an object representing the error.
+This object belongs to a subclass of the Throwable class.
+
+For the above example:
+
+ArithmeticException ex = new ArithmeticException("/ by zero");
+
+Step 3: The Exception is Thrown
+
+The exception object is thrown to the JVM using the throw mechanism — automatically by JVM or manually by programmer.
+
+a)If JVM throws it automatically then it is built-in exception.
+b)If programmer throws it manually then it is user-defined or manually thrown exception or custom exception.
+
+Step 4: JVM Looks for a Matching catch Block
+
+Now, the JVM starts searching for a matching catch block that can handle this exception.
+
+It looks in this order:
+The current method (try-catch inside method).
+If not found → the method that called this method
+Continues going up the call stack.
+
+If no method handles it → JVM terminates the program
+
+This process is called Exception Propagation.
+
+Step 5: Control Transfers to the Catch Block
+
+If a matching catch block is found, control is immediately transferred there, and the rest of the code in the try block is skipped.
+
+Example:
+
+try {
+    int x = 10 / 0;  // Exception occurs here
+    System.out.println("This will not execute");
+} catch (ArithmeticException e) {
+    System.out.println("Exception caught: " + e);
+}
+System.out.println("Program continues...");
+
+
+Output:
+
+Exception caught: java.lang.ArithmeticException: / by zero
+Program continues...
+
+Step 6: If No Catch Block Found
+
+If no matching catch block is found in the entire call chain:
+
+JVM prints the exception name, description, and stack trace.
+
+Program terminates abnormally.
+
+Example:
+
+int a = 10 / 0;
+System.out.println("Unreachable code");
+
+Output:
+
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+	at MyProgram.main(MyProgram.java:3)
+
+Exception Propagation Example
+class Test {
+    static void divide() {
+        int x = 10 / 0;  // exception occurs
+    }
+
+    static void compute() {
+        divide(); // called by compute()
+    }
+
+    public static void main(String[] args) {
+        try {
+            compute(); // exception propagated here
+        } catch (ArithmeticException e) {
+            System.out.println("Handled in main(): " + e);
+        }
+    }
+}
+
+
+Explanation:
+
+Exception occurs in divide().
+
+No catch block → sent to compute().
+
+No catch block there → sent to main().
+
+main() has a catch block → handled.
+
+Output:
+
+Handled in main(): java.lang.ArithmeticException: / by zero
+
+Types of Exception Generation:
+i. Built-in: occurs when When Java code violates rules, Throws It by JVM, eg:Division by zero, invalid index
+ii.User-defined Exception:occurs when When programmer defines own error condition,Throws It by Programmer,eg:Age < 18, invalid marks, etc.
+
+Exception Lifecycle 
+Error detected → Exception object created → Exception thrown
+        ↓
+    JVM searches for handler
+        ↓
+  If found → catch block executes
+  If not found → program terminates
